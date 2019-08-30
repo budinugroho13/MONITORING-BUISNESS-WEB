@@ -3,3 +3,4 @@ Firdausi Nuzula Zamzami
 Intan Maharani
 Budi Nugroho
 Satria Amien Tho'at
+Fery Ardiansyah
