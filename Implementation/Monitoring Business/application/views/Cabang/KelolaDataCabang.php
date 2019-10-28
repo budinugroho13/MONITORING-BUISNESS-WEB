@@ -14,7 +14,7 @@
 
   </head>
   
-  <body style="background:#0d0d0c; color:white;">
+  <body style="background:white; color:black;">
     <nav class="navbar navbar-inverse" style="background:#0d0d0c;">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -68,13 +68,13 @@
       </div>
     </div>
 
-    <div style="background:#0d0d0c;height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
+    <div style=";height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
         <div class="container">
             <br>
             <img src="" style="width:100%;max-width:140px;display:block;margin-left:auto;margin-right:auto;">
-                <div style="color:white;text-align:center;margin-top:15px;">
-                     Copyright ©MonitoringBusiness 2019 <a href="#" style="color:white;"><strong>Monitoring Business</strong></a></div>
-                    <div style="color:white;text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
+                <div style="text-align:center;margin-top:15px;">
+                     Copyright ©MonitoringBusiness 2019 <a href="#" ><strong>Monitoring Business</strong></a></div>
+                    <div style="text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
         </div>
     </div>
 

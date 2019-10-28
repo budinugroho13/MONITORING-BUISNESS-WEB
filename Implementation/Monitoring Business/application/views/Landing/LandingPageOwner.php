@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="carousel-inner">
 
           <div class="item active">
-            <img src="1,2.jpg" alt="Los Angeles" style="width:100%;">
+            <img src="assets/img/1,2.jpg" alt="Los Angeles" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>Los Angeles</h3>
               <p>LA is always so much fun!</p>
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <div class="item">
-            <img src="3,2,1.jpg" alt="Chicago" style="width:100%;">
+            <img src="assets/img/3,2,1.jpg" alt="Chicago" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>Chicago</h3>
               <p>Thank you, Chicago!</p>
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         
           <div class="item">
-            <img src="3,2.png" alt="New York" style="width:100%;">
+            <img src="assets/img/3,2.png" alt="New York" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>New York</h3>
               <p>We love the Big Apple!</p>
@@ -84,11 +84,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <br>
     <br>
 
-    <div style="background:#0d0d0c;height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
+    <div style="color:black;height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
         <div class="container">
             <img src="" style="width:100%;max-width:140px;display:block;margin-left:auto;margin-right:auto;">
                 <br>
-                <div style="color:white;text-align:center;margin-top:15px;">
-                     Copyright ©MonitoringBusiness 2019 <a href="#" style="color:white;"><strong>Monitoring Business</strong></a></div>
-                    <div style="color:white;text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
+                <div style="text-align:center;margin-top:15px;">
+                     Copyright ©MonitoringBusiness 2019 <a href="#" style="color:black;"><strong>Monitoring Business</strong></a></div>
+                    <div style="color:black;text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
     </div>
