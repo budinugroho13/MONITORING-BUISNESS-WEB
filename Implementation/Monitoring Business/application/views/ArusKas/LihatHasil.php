@@ -11,14 +11,14 @@
           <div class="navbar-header">
               <a class="navbar-brand" href="#">Nama Owner</a>
           </div>
-          <li><a href="<?php echo base_url("LandingController") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="<?php echo base_url("LandingController/logoutOwner") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
     </nav>
 
-    <center><h1 style="font-family: Harrington; font-size: 35px; color: black; background-color: white;"><strong>Statistik Data Bulanan Setiap Cabang</strong></h1></center>
-    <center><img src="lh.jpg"></center><hr>
-
+    <center><h1 style="font-family: Harrington; font-size: 35px; color: black;"><strong>Statistik Data Bulanan Setiap Cabang</strong></h1></center>
+    <center><img src="assets/img/lh.jpg"></center><hr>
+    
     <div class="row">
       <div class="col-sm-4">
         <div class="panel-group" id="accordion" style="width: 70%; margin-left: 30px;">

@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
             </div>
           </form>
-          <li><a href="<?php echo base_url("RegistrasiController") ?>" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+          <li><a class="btn" data-toggle="modal" data-target="#exampleModalLong" style="width:auto;"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
         </ul>
       </div>
     </nav>
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active">
-            <img src="1,2.jpg" alt="Los Angeles" style="width:100%;">
+            <img src="assets/img/1,2.jpg" alt="Los Angeles" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>Los Angeles</h3>
               <p>LA is always so much fun!</p>
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <div class="item">
-            <img src="3,2,1.jpg" alt="Chicago" style="width:100%;">
+            <img src="assets/img/3,2,1.jpg" alt="Chicago" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>Chicago</h3>
               <p>Thank you, Chicago!</p>
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         
           <div class="item">
-            <img src="3,2.png" alt="New York" style="width:100%;">
+            <img src="assets/img/3,2.png" alt="New York" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>New York</h3>
               <p>We love the Big Apple!</p>
@@ -67,52 +67,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     <!-- </div> -->
 
-    <div class="container" style="color:white;text-align:center;margin-top:15px;">
-      <h3>Monitoring Your Business On Here!</h3>
-      <a type="button" class="btn btn-secondary" href="<?php echo base_url('LandingCabangController'); ?> ">CobaCabang</a>
-      <a type="button" class="btn btn-secondary" href="<?php echo base_url('LandingOwnerController'); ?> ">CobaOwner</a>
-
+    <div class="container" style="color:white;text-align:center;justify-content: center;margin-top:40px;margin-bottom:40px;">
+      <h3 style="color: black;">Monitoring Your Business On Here!</h3>
+      <a type="button" class="btn btn-success" href="<?php echo base_url('LandingCabangController'); ?> ">CobaCabang</a>
     </div>
 
-    <div style="background:#0d0d0c;height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
-        <div class="container">
-            <br>
-            <img src="" style="width:100%;max-width:140px;display:block;margin-left:auto;margin-right:auto;">
-                <div style="color:white;text-align:center;margin-top:15px;">
-                     Copyright ©MonitoringBusiness 2019 <a href="#" style="color:white;"><strong>Monitoring Business</strong></a></div>
-                    <div style="color:white;text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
-    </div>
-
-        <div id="id01" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="avatar.png" alt="Avatar" class="avatar">
+    <!-- Modal Login -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Login</h1>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-
-          <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <br>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <br>
-            <label for="psw"><b>Password</b></label>
-            <br>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <br>  
-            <button type="submit">Login</button>
-            <br>
-            <label>
-              <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-          </div>
-
-          <div class="containerbwh" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-            <br>
-            <span class="psw">Create <a href="#">Account</a></span>
-          </div>
-        </form>
+          <form action="<?php echo base_url('LandingController/loginOwner') ?>" method="post">
+            <div class="modal-body">
+                <div class="form-group row">
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail" name="username" placeholder="Username">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+                  </div>
+                </div>
+                <div>
+                  <a type="button" class=" btn btn-danger" href="<?php echo base_url('RegistrasiController'); ?> ">Registrasi</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
 
      

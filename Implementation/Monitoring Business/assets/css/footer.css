@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+.upfoot{
+	position: absolute;
+	width: 100%;
+
+}
+
+.globalfooter{
+		font-family: 'Open Sans', sans-serif;
+		position: relative;
+		max-height: 20%;
+		bottom: 0;
+
+}
+.dtcabang{
+	border-bottom: 1px solid #ccc;
+}
+
+.cont1{
+	border: 1px solid #e3e3e3;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+	border-radius: 5px;
+	padding: 10px;
+	min-height: 1000%;
+	margin-top: 3%;
+	margin-bottom: 7%;
+}
+.cont2{
+	margin-bottom: 3%;
+}

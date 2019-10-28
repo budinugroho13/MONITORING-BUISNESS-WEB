@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-image: linear-gradient(to bottom,#312E34,#C3C3C3);
+  margin:0;
+  padding: 0; 
+}#312E34,#3C3A3E,#464448,#514F53
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.contform {
+  margin: 0;
+  margin-top: 3%;
+  padding: 30px;
+  text-align: left;
+  width: 50%;
+  margin-right:auto;
+  margin-left:auto;
+  border-radius: 8px;
+  margin-bottom: 4%;
+  /*box-shadow:0 0 10px rgba(0, 0, 0, 0.5);*/
+   /* box-shadow: 0 7px 4px #777;*/
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  background: inherit;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/*select{
+  display: inline-block;
+  padding: 15px;
+  width: 81%;
+  border:none;
+  margin: 5px 0 22px 0;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+*/
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  text-align: center;
+  color: black;
+  display: block;
+}
+textarea{
+  width: 100%;
+}
+#cek{
+  color: #F5DEB3;
+}
+.acc a{
+  color: #FF0119;
+  text-decoration: none;
+}
+.acc a:hover{
+  color:red;
+  text-decoration: underline;
+}
+.registhead{
+ border-bottom: 2px solid #000000;
+ border-top: 2px solid #000000;
+ border-radius: 8px;
+ margin-bottom: 20px;
+ text-align: center;
+}
+.registhead h2{
+  color: wheat;
+}
+
+.contform label, .label{
+  color: white;
+  font-weight: bold;
+}

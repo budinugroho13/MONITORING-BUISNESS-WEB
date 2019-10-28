@@ -21,9 +21,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <a class="navbar-brand" href=<?php echo base_url("KelolaDataOwnerController"); ?>>Profile</a>
           </div>
           <div class="navbar-header">
-              <a class="navbar-brand" href="#">Nama Owner</a>
+            <?php $data = $this->session->userdata('owner');  ?>
+              <a class="navbar-brand" href="#"><?php echo $data["nama"] ?></a>
           </div>
-          <li><a href="<?php echo base_url("LandingController") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="<?php echo base_url("LandingController/logoutOwner") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -40,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="carousel-inner">
 
           <div class="item active">
-            <img src="1,2.jpg" alt="Los Angeles" style="width:100%;">
+            <img src="assets/img/1,2.jpg" alt="Los Angeles" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>Los Angeles</h3>
               <p>LA is always so much fun!</p>
@@ -48,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <div class="item">
-            <img src="3,2,1.jpg" alt="Chicago" style="width:100%;">
+            <img src="assets/img/3,2,1.jpg" alt="Chicago" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>Chicago</h3>
               <p>Thank you, Chicago!</p>
@@ -56,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         
           <div class="item">
-            <img src="3,2.png" alt="New York" style="width:100%;">
+            <img src="assets/img/3,2.png" alt="New York" style="width:100%;">
             <div class="carousel-caption" style="color : #0d0d0c;">
               <h3>New York</h3>
               <p>We love the Big Apple!</p>
@@ -78,17 +79,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- </div> -->
     <br>
     <center><div>
-      <a href="<?php echo base_url("LihatHasilController") ?>" type="button" class="btn btn-success" style="color : #0d0d0c;"><strong>Lihat Hasil</strong></a> 
-      <a href="<?php echo base_url("KelolaDataCabangController") ?>" type="button" class="btn btn-warning" style="color : #0d0d0c;"><strong>Kelola Data Cabang</strong></a>
+      <a href="<?php echo base_url("LihatHasilController") ?>" type="button" class="btn btn-success" style="color : #FFFFFF;"><strong>Lihat Hasil</strong></a> 
+      <a href="<?php echo base_url("KelolaDataCabangController") ?>" type="button" class="btn btn-warning" style="color : #FFFFFF;"><strong>Kelola Data Cabang</strong></a>
     </div></center>
     <br>
     <br>
 
-    <div style="background:#0d0d0c;height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
-        <div class="container">
-            <img src="" style="width:100%;max-width:140px;display:block;margin-left:auto;margin-right:auto;">
-                <br>
-                <div style="color:white;text-align:center;margin-top:15px;">
-                     Copyright ©MonitoringBusiness 2019 <a href="#" style="color:white;"><strong>Monitoring Business</strong></a></div>
-                    <div style="color:white;text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
-    </div>

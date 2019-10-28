@@ -18,7 +18,7 @@
           <div class="navbar-header">
               <a class="navbar-brand" href="#">Nama Owner</a>
           </div>
-          <li><a href="<?php echo base_url("LandingController") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="<?php echo base_url("LandingController/logoutOwner") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
     </nav>

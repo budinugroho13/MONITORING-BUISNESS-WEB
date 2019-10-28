@@ -5,7 +5,9 @@ class RegistrasiController extends CI_Controller {
 
 	public function index()
 	{
+			// $this->load->view('Fixed/Header');
 			$this->load->view('Login/Registrasi');
+			$this->load->view('Fixed/Footer');
 	}
 
 }
