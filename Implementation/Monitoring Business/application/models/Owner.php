@@ -11,8 +11,15 @@ class Owner extends CI_Model {
         $this->db->from('owner');
         $query = $this->db->get();
         return $query->row();
-
 	}
+
+	public function insertData($data)
+	{
+		$this->db->insert('owner', $data);
+		return;
+	}
+
+
 	
 
 }

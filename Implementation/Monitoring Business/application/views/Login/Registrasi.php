@@ -15,14 +15,18 @@
 </head>
 <body>
   <div class="contform">
-    <form class="contform2" action="/action_page.php">
+  
+    <?php echo validation_errors(); ?>
+    <form action="<?php echo base_url('RegistrasiController/add') ?>" method="post">
       <div class="registhead">
         <h1 id="cek">REGISTER</h1>
         <h2>Please fill in this form to create an account</h2>
       </div> 
-
+      <?php if (!empty($this->session->flashdata('hasil'))){?>
+        <div class="alert alert-danger"><?php echo $this->session->flashdata('hasil');?></div>
+      <?php }?>
       <label for="nl"><b>Nama Lengkap</b></label>
-      <input type="text" placeholder="Enter Nama Lengkap" name="nl" required>
+      <input type="text" placeholder="Enter Nama Lengkap" name="name" required>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
@@ -45,14 +49,14 @@
           <td>
             <select style="background-color:#f1f1f1;" class="form-control form-control-lg" name="jb" id="jb" required>
               <option value="">-Pilih-</option>
-              <option value="1.">Manufaktur</option>
-              <option value="2.">Jasa</option>
-              <option value="3.">Pengecer dan Distributor</option>
-              <option value="4.">Pertanian dan Pertambangan</option>
-              <option value="5.">Finansial</option>
-              <option value="6.">Utilitas</option>
-              <option value="7.">Real Estate</option>
-              <option value="8.">Transportasi</option>
+              <option value="Manufaktur">Manufaktur</option>
+              <option value="Jasa">Jasa</option>
+              <option value="engecer dan Distributor">Pengecer dan Distributor</option>
+              <option value="Pertanian dan Pertambangan">Pertanian dan Pertambangan</option>
+              <option value="Finansial">Finansial</option>
+              <option value="Utilitas">Utilitas</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Transportasi">Transportasi</option>
             </select>
           </td>
         </tr>
@@ -63,7 +67,7 @@
            <td>Alamat Owner</td></div>
            <br>
            <td>
-            <textarea style="background-color: #f1f1f1; border-radius: 8px;" placeholder="Isi Alamat Owner" style="border-radius: 8px;"></textarea>
+            <input type="textarea" style="background-color: #f1f1f1; border-radius: 8px;" placeholder="Isi Alamat Owner" name="alamat" style="border-radius: 8px;">
           </td>
         </tr>
 
