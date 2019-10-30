@@ -29,7 +29,7 @@ body{
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password]{
+input[type=text], input[type=password], input[type=textarea]{
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -39,16 +39,6 @@ input[type=text], input[type=password]{
   border-radius: 10px;
 }
 
-/*select{
-  display: inline-block;
-  padding: 15px;
-  width: 81%;
-  border:none;
-  margin: 5px 0 22px 0;
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-*/
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
@@ -88,12 +78,7 @@ a {
   color: black;
   display: block;
 }
-textarea{
-  width: 100%;
-}
-#cek{
-  color: #F5DEB3;
-}
+
 .acc a{
   color: #FF0119;
   text-decoration: none;
@@ -108,11 +93,8 @@ textarea{
  border-radius: 8px;
  margin-bottom: 20px;
  text-align: center;
+ color: white;
 }
-.registhead h2{
-  color: wheat;
-}
-
 .contform label, .label{
   color: white;
   font-weight: bold;

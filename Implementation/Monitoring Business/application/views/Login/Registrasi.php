@@ -19,7 +19,7 @@
     <?php echo validation_errors(); ?>
     <form action="<?php echo base_url('RegistrasiController/add') ?>" method="post">
       <div class="registhead">
-        <h1 id="cek">REGISTER</h1>
+        <h1>REGISTER</h1>
         <h2>Please fill in this form to create an account</h2>
       </div> 
       <?php if (!empty($this->session->flashdata('hasil'))){?>
@@ -67,7 +67,7 @@
            <td>Alamat Owner</td></div>
            <br>
            <td>
-            <input type="textarea" style="background-color: #f1f1f1; border-radius: 8px;" placeholder="Isi Alamat Owner" name="alamat" style="border-radius: 8px;">
+            <input type="textarea" style="background-color: #f1f1f1; border-radius: 8px;" placeholder="Isi Alamat Owner" name="alamat" style="border-radius: 8px;" class="btn-block">
           </td>
         </tr>
 
