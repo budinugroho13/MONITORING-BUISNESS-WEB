@@ -26,7 +26,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Nama Cabang</a>
+          <a class="navbar-brand" href="#"><?php  ?></a>
         </div>
         <li><a href="<?php echo base_url("LandingController/logoutOwner") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
@@ -35,6 +35,7 @@
 
   <div class="dtcabang" style="font-size: 36px;">
     <strong><center>- Data Cabang PT X -</center></strong>
+    
   </div>
 
   <div class="container cont1">
@@ -68,15 +69,22 @@
             </tr>
           </tbody>
         </table>
+        <?php if (!empty($this->session->flashdata('CabangGagal'))){?>
+        <div class="alert alert-danger"><?php echo $this->session->flashdata('CabangGagal');?></div>
+      <?php }else if(!empty($this->session->flashdata('CabangSukses'))){
+        ?>
+        <div class="alert alert-success"><?php echo $this->session->flashdata('CabangSukses');?></div>
+        <?php } ?>
         <button style="float:right; width: 250px; float: left;" type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Tambah Data Cabang</button>
+
       </div>
 
   </div>
 
 
   <div id="id01" class="modal">
-
-    <form class="modal-content animate" action="/action_page.php">
+       
+    <form class="modal-content animate" action="<?php echo base_url('KelolaDataCabangController/add') ?>" method="post">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="assets/img/avatar.png" alt="Avatar" class="avatar">
@@ -85,18 +93,23 @@
       <div class="container">
         <label for="uname"><b>Nama Cabang</b></label>
         <br>
-        <input type="text" placeholder="Enter Nama Cabang" name="uname" required>
+        <input type="text" placeholder="Enter Nama Cabang" name="name" required>
         <br>
         <label for="psw"><b>Lokasi Cabang</b></label>
         <br>
-        <input type="text" placeholder="Enter Lokasi Cabang" name="psw" required>
+        <input type="text" placeholder="Enter Lokasi Cabang" name="lokasi" required>
         <br>
-        <label for="js"><b>Jenis Usaha</b></label>
+        <label for="username"><b>Username</b></label>
         <br>
-        <input type="text" placeholder="Enter Jenis Usaha" name="js" required>
+        <input type="text" placeholder="Username" name="username" required>
+        <br>
+        <label for="Password"><b>Password</b></label>
+        <br>
+        <input type="Password" placeholder="Password" name="pass" required>
         <br>   
         <button type="submit">Simpan</button>
         <br>
+
         <label>
           <input type="checkbox" checked="checked" name="remember"> Data yang dimasukkan sudah benar sesuai dengan kenyataan.
         </label>

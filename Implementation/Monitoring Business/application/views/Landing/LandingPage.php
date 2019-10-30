@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
   </form>
-  <li><a class="btn" data-toggle="modal" data-target="#exampleModalLong" style="width:auto;"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+  <li><a class="btn" data-toggle="modal" data-target="#myModal" style="width:auto;"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
 </ul>
 </div>
 </nav>
@@ -75,7 +75,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- login -->
     <div class="container thismodal" style="text-align:center;justify-content: center;margin-top:40px;margin-bottom:40px;">
       <!-- Trigger the modal with a button -->
-      <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" style="font-weight: 800;">LOGIN</button>
 
       <!-- Modal -->
       <div class="modal fade" id="myModal" role="dialog">
@@ -107,15 +106,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h3 style="text-align: left; font-weight: 900;">Login Owner </h3>
                 <div class= "input-text">
                   <div class="input-text-user input-t">
-                    <input type="text" name="username" id="" placeholder="Username">
-                  </div>
-                  <div class="input-text-pass input-t">
-                    <input type="password" name="password" id="" placeholder="password">
-                  </div>
-                </div>
-                <div class="masuk">
-                  <button type="button" class="btn btn-danger btn-lg " name="button" id=""> LOGIN</button>
-                </div>
+                  <form action="<?php echo base_url('LandingController/loginOwner') ?>" method="post">
+                  <input type="text" name="username" id="" placeholder="Username">
+                    </div>
+                      <div class="input-text-pass input-t">
+                        <input type="password" name="password" id="" placeholder="password">
+                      </div>
+                    </div>
+                    <div class="masuk">
+                      <button type="submit" class="btn btn-danger btn-lg " name="button" id=""> LOGIN</button>
+                    </div>
+                  </form>
                 <div class="daftar">
                   <p>Belum punya Cabang? <a href="#" title="" name=""> Daftar Akun Cabang</a></p>
                 </div>
@@ -125,16 +126,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-laptop" aria-hidden="true" style="font-size: 70px; color:#342C2C; "></i>
                 <h3 style="text-align: left; font-weight: 900;">Login Pegawai</h3>
                 <div class="input-text">
-                  <div class="input-text-user input-t">
-                    <input type="text" name="username" id="" placeholder="Username">
+                  <form action="<?php echo base_url('LandingController/loginCabang') ?>" method="post">
+                    <div class="input-text-user input-t">
+                      <input type="text" name="username" id="" placeholder="Username">
+                    </div>
+                    <div class="input-text-pass input-t">
+                      <input type="password" name="password" id="" placeholder="password">
+                    </div>
                   </div>
-                  <div class="input-text-pass input-t">
-                    <input type="password" name="password" id="" placeholder="password">
+                  <div class="masuk">
+                    <button type="submit" class="btn btn-danger btn-lg " name="button" id=""> LOGIN</button>
                   </div>
-                </div>
-                <div class="masuk">
-                  <button type="button" class="btn btn-danger btn-lg " name="button" id=""> LOGIN</button>
-                </div>
+                  </form>
               </div>
 
 
@@ -143,44 +146,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div> 
         </div>
       </div>
+
     </div>
 
-    <!-- Modal Login -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Login</h1>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="<?php echo base_url('LandingController/loginOwner') ?>" method="post">
-            <div class="modal-body">
-              <div class="form-group row">
-                <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail" name="username" placeholder="Username">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
-                </div>
-              </div>
-              <div>
-                <a type="button" class=" btn btn-danger" href="<?php echo base_url('RegistrasiController'); ?> ">Registrasi</a>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
     <script type="text/javascript">
       $(document).ready(function(){
         $(function(){

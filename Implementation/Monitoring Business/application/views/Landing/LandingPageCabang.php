@@ -16,7 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </form>
           <div class="navbar-header">
-              <a class="navbar-brand" href="#">Nama Cabang</a>
+            <?php $data = $this->session->userdata('cabang');  ?> 
+              <a class="navbar-brand" href="#"><?php echo $data["namaCabang"]; ?></a>
           </div>
           <li><a href="<?php echo base_url("LandingController") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>

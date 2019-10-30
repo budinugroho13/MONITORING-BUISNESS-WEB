@@ -7,6 +7,7 @@ class LandingController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Owner');
+		$this->load->model('Cabang');
 	}
 
 	public function index()
@@ -16,14 +17,31 @@ class LandingController extends CI_Controller {
 		$this->load->view('Fixed/Footer');
 	}
 
+	public function loginCabang()
+	{
+		# code...
+		$username = $this->input->post('username');
+		$pass = $this->input->post('password');
+		$dataAkun = $this->Cabang->getDataCabang($username);
+		if($pass == $dataAkun->password && isset($pass)){
+			$dataLogin = array(
+				'idCabang' => $dataAkun->idOwner,
+				'username' => $dataAkun->username,
+				'namaCabang' => $dataAkun->namaCabang
+			);
+			$this->session->set_userdata('cabang', $dataLogin);
+			redirect('LandingCabangController');	
+		}else{
+			redirect('LandingController ');
+		}
+	}
+
 	public function loginOwner()
 	{
 		# code...
 		$username = $this->input->post('username');
 		$pass = $this->input->post('password');
 		$dataAkun = $this->Owner->getDataOwner($username);
-		// var_dump($dataAkun);
-		// exit();
 		if($pass == $dataAkun->password && isset($pass)){
 			$dataLogin = array(
 				'idOwner' => $dataAkun->idOwner,
