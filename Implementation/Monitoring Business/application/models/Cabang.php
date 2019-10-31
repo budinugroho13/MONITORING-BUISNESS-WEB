@@ -13,6 +13,17 @@ class Cabang extends CI_Model {
         return $query->row();
 	}
 
+	public function getAllData($idOwner)
+	{
+		$this->db->select('owner.jenis_bisnis,namaCabang,alamatCabang');
+		$this->db->from('cabang');
+		$this->db->join('owner', 'cabang.idOwner = owner.idOwner');
+		$this->db->where('owner.idOwner', $idOwner);
+		$query = $this->db->get();
+		return $query->result();
+		# code...
+	}
+
 	public function insertData($data)
 	{
 		# code...

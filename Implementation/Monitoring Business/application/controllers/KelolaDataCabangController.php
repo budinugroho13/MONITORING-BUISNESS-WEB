@@ -12,8 +12,13 @@ class KelolaDataCabangController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('Cabang/KelolaDataCabang');
-		$this->load->view('Fixed/Footer');		
+		if (!empty($this->session->userdata('owner'))) {
+			# code...
+			$owner = $this->session->userdata('owner');
+			$x = $this->Cabang->getAllData($owner['idOwner']);
+			$this->load->view('Cabang/KelolaDataCabang',['cabang' => $x]);
+			$this->load->view('Fixed/Footer');		
+		}
 	}
 
 	// public function sendEmail($tujuan)
@@ -59,7 +64,6 @@ class KelolaDataCabangController extends CI_Controller {
 
 		$this->form_validation->set_rules('name', 'Nama Cabang', 'required|max_length[100]');
 		$this->form_validation->set_rules('lokasi', 'Lokasi Cabang', 'required|max_length[100]');
-		// $this->form_validation->set_rules('email', 'Pengurus', 'required|max_length[100]');
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[8]');
 		$this->form_validation->set_rules('pass', 'Password', 'required|min_length[8]');
 
@@ -77,7 +81,7 @@ class KelolaDataCabangController extends CI_Controller {
 			// $emailTujuan = $this->input->post('email');
 			// $this->sendEmail($emailTujuan);
 
-			$x = $this->Cabang->getData($data['username']);
+			$x = $this->Cabang->getDataCabang($data['username']);
 			if(empty($x)) {
 				$this->Cabang->insertData($data);
 				$this->session->set_flashdata('CabangSukses', 'Berhasil Dibuat');

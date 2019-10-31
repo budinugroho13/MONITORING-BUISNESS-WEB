@@ -59,15 +59,23 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Sinar Maju</td>
-              <td>Jakarta</td>
-              <td>Furnitur dan Mebel</td>
-              <td><button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> <button type="button" class="btn btn-danger">Hapus</button></td>
-            </tr>
-          </tbody>
+            <tbody>
+          <?php
+           $no = 1;
+           foreach ($cabang as $x){
+            
+           ?>
+              <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $x->namaCabang; ?></td>
+                <td><?php echo $x->alamatCabang; ?></td>
+                <td><?php echo $x->jenis_bisnis; ?></td>
+                <td><button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> <button type="button" class="btn btn-danger">Hapus</button></td>
+              </tr>
+          <?php 
+            $no = $no+1;
+        } ?>
+            </tbody>
         </table>
         <?php if (!empty($this->session->flashdata('CabangGagal'))){?>
         <div class="alert alert-danger"><?php echo $this->session->flashdata('CabangGagal');?></div>
@@ -76,14 +84,12 @@
         <div class="alert alert-success"><?php echo $this->session->flashdata('CabangSukses');?></div>
         <?php } ?>
         <button style="float:right; width: 250px; float: left;" type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Tambah Data Cabang</button>
-
       </div>
 
   </div>
 
 
   <div id="id01" class="modal">
-       
     <form class="modal-content animate" action="<?php echo base_url('KelolaDataCabangController/add') ?>" method="post">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>

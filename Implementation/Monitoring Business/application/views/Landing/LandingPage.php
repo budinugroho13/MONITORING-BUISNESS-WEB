@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                   </form>
                 <div class="daftar">
-                  <p>Belum punya Cabang? <a href="#" title="" name=""> Daftar Akun Cabang</a></p>
+                  <p>Belum punya Akun? <a href="<?php echo base_url('RegistrasiController') ?>" title="" name=""> Registrasi </a></p>
                 </div>
               </div>
               <div class="hilang loginakhir">
