@@ -19,16 +19,16 @@
     		</div>
     		<hr>
     		<div style="font-family: Arial; font-size: 16px; padding-left: 50px;">
-    			<p>Dapat berupa berkas terkompresi <strong>(gzip,bzip,zip,rar)</strong>.</p> 
-    			<p>A compressed file's name must end in <strong>.[doc,docx].[zip,rar]</strong>. Example : <strong>coba.doc.zip</strong></p>
+    			<p>File Harus bertipe CSV<strong>(.CSV)</strong>.</p> 
+    			<p>A compressed file's name must end in <strong>.[csv]</strong>. Example : <strong>coba.csvp</strong></p>
     		</div>
     		<hr>
-    		<form action="#" style="font-family: Arial; font-size: 16px; padding-left: 50px;">
-    			Select a file from your computer:
-    			<input type="file" name="myFile">
-			</form>
+            <div style="font-family: Arial; font-size: 16px; padding-left: 50px";>
+                <form action="<?php echo base_url('InputDataKeuanganController/add'); ?>" method="post" enctype="multipart/form-data">
+                  <input type="file" name="filename">
 			<br>
-			<button type="button" class="btn btn-success" style="margin-left: 50px;">Submit</button>
+            </div>
+			     <button type="submit" class="btn btn-success" style="margin-left: 50px;">Submit</button>
+                </form>
 
             <br><br><br><br><br><br><br><br><br>
-           

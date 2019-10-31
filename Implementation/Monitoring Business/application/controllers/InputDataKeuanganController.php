@@ -16,6 +16,26 @@ class InputDataKeuanganController extends CI_Controller {
 		$this->load->view('Fixed/Footer');
 	}
 
+	 public function add()
+        {
+                $config['upload_path']          = './assets/datakeuangan';
+                $config['allowed_types']        = 'csv';
+                $config['max_size']             = 100;
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload('filename'))
+                {
+               		var_dump("gagal");
+               		exit();
+                }
+                else
+                {
+                	$file = $this->upload->data();
+                
+                }
+        }
+
 }
 
 /* End of file InputDataKeuanganController.php */
