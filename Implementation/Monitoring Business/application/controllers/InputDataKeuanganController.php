@@ -26,13 +26,14 @@ class InputDataKeuanganController extends CI_Controller {
 
                 if (!$this->upload->do_upload('filename'))
                 {
-               		var_dump("gagal");
-               		exit();
+     				$this->session->set_flashdata('not', 1);
+     				redirect('InputDataKeuanganController');
                 }
                 else
                 {
                 	$file = $this->upload->data();
-                
+     				$this->session->set_flashdata('upload', 1);
+     				redirect('InputDataKeuanganController');  						
                 }
         }
 

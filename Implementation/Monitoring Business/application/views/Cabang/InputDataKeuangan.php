@@ -30,5 +30,14 @@
             </div>
 			     <button type="submit" class="btn btn-success" style="margin-left: 50px;">Submit</button>
                 </form>
+                <?php   
+                    if (!empty($this->session->flashdata('upload'))) {
+                ?>
+                    <div class="alert alert-success">Data Berhasil Upload</div>
+
+                <?php } elseif(!empty($this->session->flashdata('not'))){ ?>
+                    
+                    <div class="alert alert-danger">Data Gagal Upload</div>
+                    <?php } ?>
 
             <br><br><br><br><br><br><br><br><br>
