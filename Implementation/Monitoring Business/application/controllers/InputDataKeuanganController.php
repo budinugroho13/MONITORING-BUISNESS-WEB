@@ -7,6 +7,8 @@ class InputDataKeuanganController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Owner');
+		$this->load->model('Cabang');
+		$this->load->model('Keuangan');
 	}
 
 	public function index()
@@ -31,7 +33,15 @@ class InputDataKeuanganController extends CI_Controller {
                 }
                 else
                 {
+                	$data = $this->session->userdata('cabang');
+
+                	$cabang = $this->Cabang->getDataCabang($data["idCabang"]);
                 	$file = $this->upload->data();
+                	$dataKeuangan = array(
+						'idCabang' => $data["idCabang"],
+						'file_keuangan' => $file["file_name"]
+					);
+                	$x = $this->Keuangan->insert($dataKeuangan);
      				$this->session->set_flashdata('upload', 1);
      				redirect('InputDataKeuanganController');  						
                 }
