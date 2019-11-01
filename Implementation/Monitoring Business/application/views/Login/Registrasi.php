@@ -9,12 +9,16 @@
   <!-- <link rel="stylesheet" type="text/css" href="assets/css/Registrasi.css"> -->
   <link rel="stylesheet" type="text/css" href="assets/css/Regis.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
 </head>
-<body>
-  <div class="contform">
+ 
+<?php if(!empty($this->session->flashdata('hasil'))){?>
+ <body onload="gagal()">
+ <?php } ?>
+ <div class="contform">
   
     <?php echo validation_errors(); ?>
     <form action="<?php echo base_url('RegistrasiController/add') ?>" method="post">
@@ -22,7 +26,8 @@
         <h1>REGISTER</h1>
         <h2>Please fill in this form to create an account</h2>
       </div> 
-      <?php if (!empty($this->session->flashdata('hasil'))){?>
+      <?php if (!empty($this->session->flashdata('hasil'))){
+        ?>
         <div class="alert alert-danger"><?php echo $this->session->flashdata('hasil');?></div>
       <?php }?>
       <label for="nl"><b>Nama Lengkap</b></label>
@@ -74,7 +79,18 @@
         <hr>
         <p class="acc">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="registerbtn" >Register</button>
         <p class="acc" style="text-align: center;">Already have an account? <a href="#" >Sign in</a>.</p>
       </form>
     </div>
+  <script>
+
+    function gagal(){
+      Swal.fire({
+        type: 'error',
+        title: 'Registrasi Gagal',
+        text: 'Akun Gagal Terdaftar',
+      })
+    }
+
+  </script>

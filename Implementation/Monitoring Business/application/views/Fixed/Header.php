@@ -15,16 +15,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="assets/css/Header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loginOwnCab.css">
+    <link rel="stylesheet" type="text/css" href="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+    <script src="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+ 
     <title>Monitoring Business</title>
 </head>
 
+<?php if(!empty($this->session->flashdata('sukses'))) { ?>
+  <body onload="berhasil()">
+ <?php} else{?>
 <body style="background-color:#ededed;">
+    <?php } ?>
     <nav class="navbar navbar-inverse" style="border-radius: 0;">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="<?php echo base_url("LandingController") ?> ">Monitoring Business</a>
       </div>
       
+<script type="text/javascript">
+       function berhasil(){
+          Swal.fire({
+            type: 'success',
+            title: 'Registrasi Sukses',
+            text: 'Akun disayang mamah intan',
+          })
+        }
+
+</script>

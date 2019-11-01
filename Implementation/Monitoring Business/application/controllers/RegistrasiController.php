@@ -45,10 +45,10 @@ class RegistrasiController extends CI_Controller {
 			$x = $this->Owner->getDataOwner($data['username']);
 			if(empty($x)) {
 				$this->Owner->insertData($data);
+				$this->session->set_flashdata('sukses','Berhasil');
 				redirect('LandingController');
 					# code...
 			}else{
-
 				$this->session->set_flashdata('hasil', 'Username Telah Terpakai');
 				redirect('RegistrasiController');
 			}

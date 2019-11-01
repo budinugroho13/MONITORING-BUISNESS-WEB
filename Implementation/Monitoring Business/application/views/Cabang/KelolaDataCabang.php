@@ -8,16 +8,38 @@
   <link rel="stylesheet" type="text/css" href="assets/css/KelolaDataCabang.css">
   <link rel="stylesheet" type="text/css" href="assets/css/Header.css">
   <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+  <script src="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
   
   <title>Monitoring Business</title>
 
 
 </head>
+<?php if (!empty($this->session->flashdata('CabangSukses'))) {?>
+  
+  <body style="background:white; color:black;" onload="berhasil()">
 
-<body style="background:white; color:black;">
+<?php }elseif(!empty($this->session->flashdata('CabangGagal'))){ ?>
+  <body style="background:white; color:black;" onload="gagal()">
+
+<?php }else{ ?>
+  <body style="background:white; color:black;">
+<?php }?>
+
+<?php 
+
+if () {
+  # code...
+var_dump(expression)
+
+}elseif () {
+  # code..
+
+}
+
+ ?>
   <nav class="navbar navbar-inverse" style="background:#0d0d0c;">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -77,12 +99,6 @@
         } ?>
             </tbody>
         </table>
-        <?php if (!empty($this->session->flashdata('CabangGagal'))){?>
-        <div class="alert alert-danger"><?php echo $this->session->flashdata('CabangGagal');?></div>
-      <?php }else if(!empty($this->session->flashdata('CabangSukses'))){
-        ?>
-        <div class="alert alert-success"><?php echo $this->session->flashdata('CabangSukses');?></div>
-        <?php } ?>
         <button style="float:right; width: 250px; float: left;" type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Tambah Data Cabang</button>
       </div>
 
@@ -126,3 +142,23 @@
       </div>
     </form>
   </div>
+
+<script>
+
+    function gagal(){
+      Swal.fire({
+        type: 'error',
+        title: 'Registrasi Gagal',
+        text: 'Akun Gagal Terdaftar',
+      })
+    }
+
+     function berhasil(){
+          Swal.fire({
+            type: 'success',
+            title: 'Registrasi Sukses',
+            text: 'Akun Telah Terdaftar',
+          })
+        }
+
+  </script>

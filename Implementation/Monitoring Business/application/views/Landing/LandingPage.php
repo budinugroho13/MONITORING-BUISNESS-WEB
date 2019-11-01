@@ -139,10 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
                   </form>
               </div>
-
-
             </div>
-
           </div> 
         </div>
       </div>
@@ -150,6 +147,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <script type="text/javascript">
+   
+
       $(document).ready(function(){
         $(function(){
           $(".loginawal").show();
