@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/KelolaDataCabang.css">
   <link rel="stylesheet" type="text/css" href="assets/css/Header.css">
   <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
-    <link rel="stylesheet" type="text/css" href="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.css">
+  <link rel="stylesheet" type="text/css" href="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
@@ -18,28 +18,15 @@
 
 </head>
 <?php if (!empty($this->session->flashdata('CabangSukses'))) {?>
-  
   <body style="background:white; color:black;" onload="berhasil()">
 
-<?php }elseif(!empty($this->session->flashdata('CabangGagal'))){ ?>
-  <body style="background:white; color:black;" onload="gagal()">
+<?php }elseif(!empty($this->session->flashdata('CabangGagal')) or !empty($this->session->flashdata('Cabang'))){ ?>
+<body style="background:white; color:black;" onload="gagal()">
 
 <?php }else{ ?>
-  <body style="background:white; color:black;">
-<?php }?>
 
-<?php 
-
-if () {
-  # code...
-var_dump(expression)
-
-}elseif () {
-  # code..
-
-}
-
- ?>
+<body style="background:white; color:black;">
+<?php  }?>
   <nav class="navbar navbar-inverse" style="background:#0d0d0c;">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -99,6 +86,7 @@ var_dump(expression)
         } ?>
             </tbody>
         </table>
+        
         <button style="float:right; width: 250px; float: left;" type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Tambah Data Cabang</button>
       </div>
 
@@ -157,7 +145,7 @@ var_dump(expression)
           Swal.fire({
             type: 'success',
             title: 'Registrasi Sukses',
-            text: 'Akun Telah Terdaftar',
+            text: 'Registrasi Berhasil',
           })
         }
 
