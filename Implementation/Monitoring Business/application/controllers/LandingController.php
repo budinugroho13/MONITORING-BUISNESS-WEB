@@ -25,11 +25,12 @@ class LandingController extends CI_Controller {
 		$dataAkun = $this->Cabang->getDataCabang($username);
 		if($pass == $dataAkun->password && isset($pass)){
 			$dataLogin = array(
-				'idCabang' => $dataAkun->idOwner,
 				'username' => $dataAkun->username,
 				'namaCabang' => $dataAkun->namaCabang
 			);
 			$this->session->set_userdata('cabang', $dataLogin);
+			$data = $this->session->userdata('cabang');
+        	$cabang = $this->Cabang->getDataCabang($data["username"]);
 			redirect('LandingCabangController');	
 		}else{
 			redirect('LandingController ');

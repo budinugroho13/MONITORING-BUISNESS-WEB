@@ -13,6 +13,8 @@ class Cabang extends CI_Model {
         return $query->row();
 	}
 
+
+
 	public function getAllData($idOwner)
 	{
 		$this->db->select('owner.jenis_bisnis,namaCabang,alamatCabang');

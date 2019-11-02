@@ -9,6 +9,7 @@ class InputDataKeuanganController extends CI_Controller {
 		$this->load->model('Owner');
 		$this->load->model('Cabang');
 		$this->load->model('Keuangan');
+        $this->load->model('Aruskas');
 	}
 
 	public function index()
@@ -18,25 +19,6 @@ class InputDataKeuanganController extends CI_Controller {
 		$this->load->view('Fixed/Footer');
 	}
 
-    public function parsingDataKeuangan($filename,$dataCabang)
-    {
-        $the_big_array = []; 
-        if (($h = fopen("./assets/datakeuangan/{$filename}", "r")) !== FALSE) 
-        {
-          while (($data = fgetcsv($h, 1000, ";")) !== FALSE) 
-          {
-            $the_big_array[] = $data;       
-          }
-          fclose($h);
-        }
-
-        // echo "<pre>";
-        // var_dump($the_big_array);
-        // echo "</pre>";
-        // exit();     
-
-        return $the_big_array;
-    }
 
 	public function add()
     {
@@ -54,17 +36,52 @@ class InputDataKeuanganController extends CI_Controller {
                 else
                 {
                 	$data = $this->session->userdata('cabang');
-                	$cabang = $this->Cabang->getDataCabang($data["idCabang"]);
+                	$cabang = $this->Cabang->getDataCabang($data["username"]);
                 	$file = $this->upload->data();
                 	$dataKeuangan = array(
-						'idCabang' => $data["idCabang"],
+						'idCabang' => $cabang->idCabang,
 						'file_keuangan' => $file["file_name"]
 					);
-                    $y = $this->parsingDataKeuangan($file["file_name"],$data);
-                	$x = $this->Keuangan->insert($dataKeuangan);
-     				$this->session->set_flashdata('upload', 1);
+
+                    
+                    $insert = $this->Keuangan->insert($dataKeuangan);
+                    $idKeuangan = $this->Keuangan->getDataKeuanganTerbaru($dataKeuangan["idCabang"]);
+                    $this->parsingDataKeuangan($file["file_name"],$idKeuangan[0]->idKeuangan);
+                
+                    $this->session->set_flashdata('upload', 1);
      				redirect('InputDataKeuanganController');  						
                 }
+    }
+
+    public function parsingDataKeuangan($filename,$idKeuangan)
+    {
+        $the_big_array = []; 
+
+        if (($h = fopen("./assets/datakeuangan/{$filename}", "r")) !== FALSE) 
+        {
+          while (($data = fgetcsv($h, 1000, ";")) !== FALSE) 
+          {
+            $the_big_array[] = $data;       
+          }
+          fclose($h);
+        }
+
+        $hutang = (int)$the_big_array[1][0];
+        $piutang = (int)$the_big_array[1][1];
+        $pendapatan = (int)$the_big_array[1][2];
+        $biaya = (int)$the_big_array[1][3];
+        $kas = ($pendapatan + $piutang) - ($hutang + $biaya); 
+        $dataKas = array(
+                'hutang' => $hutang,
+                'piutang' => $piutang,
+                'pendapatan' => $pendapatan,
+                'bebanBiaya' => $biaya,
+                'idKeuangan' => $idKeuangan,
+                'kas' => $kas
+        );
+
+        $insert = $this->Aruskas->insertData($dataKas);
+        return $dataKas;
     }
 
 }
