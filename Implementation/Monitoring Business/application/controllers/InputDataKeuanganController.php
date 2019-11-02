@@ -18,8 +18,28 @@ class InputDataKeuanganController extends CI_Controller {
 		$this->load->view('Fixed/Footer');
 	}
 
-	 public function add()
+    public function parsingDataKeuangan($filename,$dataCabang)
+    {
+        $the_big_array = []; 
+        if (($h = fopen("./assets/datakeuangan/{$filename}", "r")) !== FALSE) 
         {
+          while (($data = fgetcsv($h, 1000, ";")) !== FALSE) 
+          {
+            $the_big_array[] = $data;       
+          }
+          fclose($h);
+        }
+
+        // echo "<pre>";
+        // var_dump($the_big_array);
+        // echo "</pre>";
+        // exit();     
+
+        return $the_big_array;
+    }
+
+	public function add()
+    {
                 $config['upload_path']          = './assets/datakeuangan';
                 $config['allowed_types']        = 'csv';
                 $config['max_size']             = 100;
@@ -34,20 +54,30 @@ class InputDataKeuanganController extends CI_Controller {
                 else
                 {
                 	$data = $this->session->userdata('cabang');
-
                 	$cabang = $this->Cabang->getDataCabang($data["idCabang"]);
                 	$file = $this->upload->data();
                 	$dataKeuangan = array(
 						'idCabang' => $data["idCabang"],
 						'file_keuangan' => $file["file_name"]
 					);
+                    $y = $this->parsingDataKeuangan($file["file_name"],$data);
                 	$x = $this->Keuangan->insert($dataKeuangan);
      				$this->session->set_flashdata('upload', 1);
      				redirect('InputDataKeuanganController');  						
                 }
-        }
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
 
 /* End of file InputDataKeuanganController.php */
 /* Location: ./application/controllers/InputDataKeuanganController.php */

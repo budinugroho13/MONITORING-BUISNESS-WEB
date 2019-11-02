@@ -11,6 +11,11 @@ class KelolaArusKasController extends CI_Controller {
 
 	}
 
+	public function getDataKeuangan()
+	{
+		
+	}
+
 }
 
 /* End of file KelolaArusKas.php */
