@@ -1,5 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
  ?>
+<?php 
+  $this->load->model('Keuangan');
+ ?>
  
         <ul class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left" action="/action_page.php">
@@ -24,234 +27,87 @@
     </nav>
 
     <div class="container">
-      <div style="font-family: Harrington; font-size: 36px; color: white;">
-          <strong><center>- Data Keuangan Setiap Cabang -</center></strong>
-      </div><hr>
-     <div class="panel-group" id="accordion">
+        <div style="font-family: Harrington; font-size: 36px; color: white;">
+            <strong><center>- Data Keuangan Setiap Cabang -</center></strong>
+        </div><hr>
+           <?php $count = 0; ?>
+           <?php foreach ($cabang as $x) {
+             # code...
+            $count = $count + 1;
+            ?>
         <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Cabang Sinar Maju</a>
-            </h4>
-          </div>
-          <div id="collapse1" class="panel-collapse collapse">
-            <div class="panel-body">                                                                                    
-                <div class="table-responsive">          
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Firstname</th>
-                      <th>Lastname</th>
-                      <th>Age</th>
-                      <th>City</th>
-                      <th>Country</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Anna</td>
-                      <td>Pitt</td>
-                      <td>35</td>
-                      <td>New York</td>
-                      <td>USA</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $count?>"> <?php echo $x -> namaCabang ?></a>
+                </h4>
+           </div>
+              <div id="collapse<?php echo $count?>" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="table-responsive">          
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Pendapatan</th>
+                            <th scope="col">Beban Biaya</th>
+                            <th scope="col">Hutang</th>
+                            <th scope="col">Piutang</th>
+                            <th scope="col">Tanggal Upload</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                         $keuangan = $this->Keuangan->getDataLengkap($x->namaCabang);
+                         $no = 0;
+                         $kas = 0;
+                         foreach ($keuangan as $key){
+                         $no = $no + 1;
+                         $kas = $kas + $key -> kas; 
+                         ?>
+                          <tr>
+                            <td><?php echo $no?></td>
+                            <td><?php echo $key -> pendapatan ?></td>
+                            <td><?php echo $key -> bebanBiaya ?></td>
+                            <td><?php echo $key -> hutang ?></td>
+                            <td><?php echo $key -> piutang ?></td>
+                            <td><?php echo $key -> tanggal_upload ?></td>
+                          </tr>
+                    </div>
 
-              <strong><h4 style="color: black; font-family: Arial black; margin-left: 20px;">Kas = ... </h4></strong>
-              <button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Beri Saran</button>
-
-          </div>
-        </div>
-      </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Cabang Pelita Harapan</a>
-            </h4>
-          </div>
-          <div id="collapse2" class="panel-collapse collapse">
-            <div class="panel-body">
-
-               <div class="table-responsive">          
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Firstname</th>
-                      <th>Lastname</th>
-                      <th>Age</th>
-                      <th>City</th>
-                      <th>Country</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Anna</td>
-                      <td>Pitt</td>
-                      <td>35</td>
-                      <td>New York</td>
-                      <td>USA</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <strong><h4 style="color: black; font-family: Arial black; margin-left: 20px;">Kas = ... </h4></strong>
-              <button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Beri Saran</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Cabang Maju Jaya</a>
-            </h4>
-        </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">
-                <div class="table-responsive">          
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                        <th>City</th>
-                        <th>Country</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Anna</td>
-                        <td>Pitt</td>
-                        <td>35</td>
-                        <td>New York</td>
-                        <td>USA</td>
-                      </tr>
-                    </tbody>
-                  </table>
+              <?php } ?>
+                  <h4 style="color: black; font-family: Arial black; margin-left: 20px;">Kas : <?php echo $kas ?> </h4>
+                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalSaran<?php echo $count ?>">Beri Saran</button>
                 </div>
-
-              <strong><h4 style="color: black; font-family: Arial black; margin-left: 20px;">Kas = ... </h4></strong>
-              <button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Beri Saran</button>
-
-          </div>
+                        </tbody>
+                      </table>
+            </div>
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Cabang Jiwa Marga</a>
-            </h4>
-        </div>
-          <div id="collapse4" class="panel-collapse collapse">
-            <div class="panel-body">
-                <div class="table-responsive">          
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                        <th>City</th>
-                        <th>Country</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Anna</td>
-                        <td>Pitt</td>
-                        <td>35</td>
-                        <td>New York</td>
-                        <td>USA</td>
-                      </tr>
-                    </tbody>
-                  </table>
+      <div class="modal fade" id="modalSaran<?php echo $count ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align: center"><?php echo $x->namaCabang ?></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              <form action="<?php echo base_url('KelolaArusKasController/setSaranOwner') ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Saran Owner :</label>
+                      <input type="hidden" name="id" value="<?php echo $x -> idCabang ?>" >
+                      <textarea class="form-control" name="saran" rows="4" cols="50"></textarea>
+                    </div>
                 </div>
-
-              <strong><h4 style="color: black; font-family: Arial black; margin-left: 20px;">Kas = ... </h4></strong>
-              <button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Beri Saran</button>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Cabang Jasa Hati</a>
-            </h4>
-        </div>
-          <div id="collapse5" class="panel-collapse collapse">
-            <div class="panel-body">
-                <div class="table-responsive">          
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Age</th>
-                        <th>City</th>
-                        <th>Country</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Anna</td>
-                        <td>Pitt</td>
-                        <td>35</td>
-                        <td>New York</td>
-                        <td>USA</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Send message</button>
                 </div>
-
-              <strong><h4 style="color: black; font-family: Arial black; margin-left: 20px;">Kas = ... </h4></strong>
-              <button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Beri Saran</button>
-
+              </form>
           </div>
         </div>
       </div>
 
-      </div>
-    </div> 
-
-    <div style="background:#0d0d0c;height:100%;position:relative;border-top:1px solid hsla(0,0%,100%,.2);padding-top:20px;padding-bottom:20px">
-        <div class="container">
-            <img src="" style="width:100%;max-width:140px;display:block;margin-left:auto;margin-right:auto;">
-                <br>
-                <div style="color:white;text-align:center;margin-top:15px;">
-                     Copyright ©MonitoringBusiness 2019 <a href="#" style="color:white;"><strong>Monitoring Business</strong></a></div>
-                    <div style="color:white;text-align:center;"><i class="fa fa-code"></i> with <i class="fa fa-heart-o" style="color:red"></i> in Cilegon, Depok, Pati, Sragen.</div>
-    </div>
-
-      <div id="id01" class="modal">
-        
-        <form class="modal-content animate" action="/action_page.php">
-          <div class="container">
-            <label for="uname"><b>Saran Untuk Cabang ...</b></label>
-            <br>
-            <textarea style="width: 32%;"></textarea><br>
-            <button type="submit">Submit</button>
-          </div>
-
-          <div class="containerbwh" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-          </div>
-        </form>
-      </div>
+          <?php } ?>

@@ -6,7 +6,6 @@ class Keuangan extends CI_Model {
 	public function insert($data)
 	{
 		return $this->db->insert('Keuangan', $data);
-		# code...
 	}
 
 	public function getData($idCabang)
@@ -19,6 +18,33 @@ class Keuangan extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+
+	public function getDataLengkap($namaCabang)
+	{
+		# code...
+		$this->db->select('cabang.namaCabang,aruskas.kas,aruskas.pendapatan,aruskas.bebanBiaya,aruskas.hutang,aruskas.piutang,cabang.alamatCabang,keuangan.tanggal_upload');
+		$this->db->from('keuangan');
+		$this->db->join('cabang', 'cabang.idCabang = keuangan.idCabang');
+		$this->db->join('labarugi', 'labarugi.idKeuangan = keuangan.idKeuangan');
+		$this->db->join('aruskas', 'aruskas.idKeuangan = keuangan.idKeuangan');
+		$this->db->where('cabang.namaCabang', $namaCabang);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getAllData()
+	{
+		# code...
+		$this->db->select('cabang.namaCabang,aruskas.kas,aruskas.pendapatan,aruskas.bebanBiaya,aruskas.hutang,aruskas.piutang,cabang.alamatCabang,keuangan.tanggal_upload');
+		$this->db->from('keuangan');
+		$this->db->join('cabang', 'cabang.idCabang = keuangan.idCabang');
+		$this->db->join('labarugi', 'labarugi.idKeuangan = keuangan.idKeuangan');
+		$this->db->join('aruskas', 'aruskas.idKeuangan = keuangan.idKeuangan');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 
 	public function getDataKeuanganTerbaru($idCabang)
 	{
@@ -58,20 +84,6 @@ class Keuangan extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
-	// public function getDataKeuanganOwner($idOwner)
-	// {
-	// 	# code...
-	// 	$this->db->select('*');
-	// 	$this->db->from('keuangan');
-	// 	$this->db->join('cabang','cabang.idCabang = keuangan.idCabang');
-	// 	$this->db->join('owner','owner.idOwner = cabang.idOwner');
-	// 	$this->db->join('labarugi', 'keuangan.idKeuangan = labarugi.idKeuangan');
-	// 	$this->db->where('owner.idOwner', $idOwner);
-	// 	$query = $this->db->get();
-	// 	return $query->result();
-	// }
-
 
 
 

@@ -14,10 +14,27 @@ class Cabang extends CI_Model {
 	}
 
 
-
 	public function getAllData($idOwner)
 	{
-		$this->db->select('owner.jenis_bisnis,namaCabang,alamatCabang');
+		$this->db->select('owner.jenis_bisnis,idCabang,namaCabang,alamatCabang');
+		$this->db->from('cabang');
+		$this->db->join('owner', 'cabang.idOwner = owner.idOwner');
+		$this->db->where('owner.idOwner', $idOwner);
+		$query = $this->db->get();
+		return $query->result();
+		# code...
+	}	
+
+	public function setSaran($data,$id)
+	{
+		# code...
+		$this->db->where('idCabang', $id);
+		$this->db->update('cabang', $data);
+	}
+
+	public function getSemuaIdCabang($idOwner)
+	{
+		$this->db->select('idCabang');
 		$this->db->from('cabang');
 		$this->db->join('owner', 'cabang.idOwner = owner.idOwner');
 		$this->db->where('owner.idOwner', $idOwner);

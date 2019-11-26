@@ -24,6 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Monitoring Business</title>
 </head>
 
+<?php if (!empty($this->session->flashdata('ok'))) {
+  # code...
+?>
+  <body onload="saran()">
+
+<?php } ?>
 <?php if(!empty($this->session->flashdata('sukses'))) { ?>
   <body onload="berhasil()">
  <?php} else{?>
@@ -34,13 +40,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="navbar-header">
           <a class="navbar-brand" href="<?php echo base_url("LandingController") ?> ">Monitoring Business</a>
       </div>
+
       
 <script type="text/javascript">
        function berhasil(){
           Swal.fire({
             type: 'success',
             title: 'Registrasi Sukses',
-            text: 'Akun disayang mamah intan',
+            text: 'Registrasi Berhasil',
+          })
+        }
+
+        function saran(){
+          Swal.fire({
+            type: 'success',
+            title: 'Pengiriman Saran Sukses',
+            text: 'Saran berhasil dikirim ke cabang',
           })
         }
 

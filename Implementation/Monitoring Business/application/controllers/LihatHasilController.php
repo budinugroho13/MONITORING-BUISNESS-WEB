@@ -31,6 +31,21 @@ class LihatHasilController extends CI_Controller {
 
 	}
 
+	public function cariData()
+	{
+		# code...
+		$namaCabang = $this->input->post("cabang");
+		$data = $this->Keuangan->getDataLengkap($namaCabang);
+		if (!empty($data)) {
+			$this->session->set_userdata("cari",true);
+		}
+		$this->load->view('Fixed/Header');
+		$this->load->view('ArusKas/LihatHasil',['cabang' => $data]);
+		$this->load->view('Fixed/Footer');	
+
+
+	}
+
 }
 
 /* End of file LihatHasilController.php */

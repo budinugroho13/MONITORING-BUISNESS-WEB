@@ -9,16 +9,30 @@
               <a class="navbar-brand" href="<?php echo base_url("KelolaDataOwnerController") ?>">Profile</a>
           </div>
           <div class="navbar-header">
-              <a class="navbar-brand" href="#">Nama Owner</a>
+            <?php $data = $this->session->userdata('owner');  ?>
+              <a class="navbar-brand" href="#"><?php echo $data["nama"]; ?></a>
           </div>
           <li><a href="<?php echo base_url("LandingController/logoutOwner") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
     </nav>
 
+
     <center><h1 style="font-family: Harrington; font-size: 35px; color: black;"><strong>Statistik Data Bulanan Setiap Cabang</strong></h1></center>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    
+    <form action="<?php echo base_url('LihatHasilController/cariData')?>" method="post">
+      <label>Cari Cabang  : </label>
+      <div class="input-group">
+        <div class="form-row"> 
+          <input type="text" class="form-control" placeholder="Search" name="cabang">
+          <input type="submit" class="btn btn-info">
+        </div>
+      </div>
+    </form>
+    
+    <hr class="btn-primary">
 
     <canvas id="myChart" width="1000" height="200"></canvas>
       <script>
@@ -74,35 +88,60 @@
           }
       });
     });
-      </script>
 
-<?php  ?>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="panel-group" id="accordion" style="width: 70%; margin-left: 30px;">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <center><a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Cabang Sinar Maju</a></center>
-                </h4>
-              </div>
-              <div id="collapse1" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <h5>Nama Cabang : </h5>
-                    <h5>Alamat Cabang : </h5>
-                    <h5>Kas Cabang : </h5>
-                    <h5>Pendapatan : </h5>
-                    <h5>Beban Biaya : </h5>
-                    <h5>Hutang : </h5>
-                    <h5>Piutang : </h5>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-<?php  ?>
-     
+     function gagal(){
+      Swal.fire({
+        type: 'error',
+        title: 'Data Tidak Ditemukan',
+        text: 'Cabang Yang Anda Cari Tidak Ditemukan',
+      })
+    }
+
+      </script>
+      <?php  $x = $this->session->userdata('cari'); {
+        # code...
+      } ?>
+      <?php if (!empty($x)) { ?>
+          <table id="table"  class="table table-striped table-bordered" >
+            <thead>
+              <tr>
+                <th scope="col">Nama</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Kas</th>
+                <th scope="col">Pendapatan</th>
+                <th scope="col">Beban Biaya</th>
+                <th scope="col">Hutang</th>
+                <th scope="col">Piutang</th>
+                <th scope="col">Tanggal Upload</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+               foreach($cabang as $x) {
+              # code...
+                ?>
+                <tr>
+                  <td><?php echo $x->namaCabang; ?></td>
+                  <td><?php echo $x->alamatCabang; ?></td>
+                  <td><?php echo $x->kas; ?></td>
+                  <td><?php echo $x->pendapatan; ?></td>
+                  <td><?php echo $x->bebanBiaya; ?></td>
+                  <td><?php echo $x->hutang; ?></td>
+                  <td><?php echo $x->piutang; ?></td>
+                  <td><?php echo $x->tanggal_upload; ?></td>
+                </tr>
+
+              <?php } ?>
+            </tbody>
+          </table>
+      <?php
+     }?>
+
+     <?php $this->session->unset_userdata('cari'); ?>
+
+
 
     </div><hr>
 
   
+

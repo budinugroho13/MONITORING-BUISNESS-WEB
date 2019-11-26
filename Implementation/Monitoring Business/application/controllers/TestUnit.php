@@ -22,7 +22,7 @@ class TestUnit extends CI_Controller {
 
 	private function redirectRegistracionPage()
 	{
-		 $x = base_url("Owner/KelolaDataOwner");
+		 $x = base_url("Login/Registrasi");
 		 $y = base_url("Fixed/Footer");
 
 		 $temp = [$x,$y];
