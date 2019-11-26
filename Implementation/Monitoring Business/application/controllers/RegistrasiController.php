@@ -8,13 +8,10 @@ class RegistrasiController extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
 		$this->load->model('Owner');
-
-
 	}
 
 	public function index()
 	{
-			// $this->load->view('Fixed/Header');
 			$this->load->view('Login/Registrasi');
 			$this->load->view('Fixed/Footer');
 	}
@@ -30,7 +27,7 @@ class RegistrasiController extends CI_Controller {
 		$this->form_validation->set_rules('nb', 'Nama Bisnis', 'required');
 		$this->form_validation->set_rules('jb', 'Jenis Bisnis', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
-
+ 
 		if ($this->form_validation->run() == TRUE) {
 			# code...
 			$data = array(
@@ -42,7 +39,9 @@ class RegistrasiController extends CI_Controller {
 				'jenis_bisnis' => $this->input->post('jb'),
 				'no_telpon' => $this->input->post('alamat'),
 			);
+
 			$x = $this->Owner->getDataOwner($data['username']);
+			
 			if(empty($x)) {
 				$this->Owner->insertData($data);
 				$this->session->set_flashdata('sukses','Berhasil');

@@ -10,6 +10,7 @@ class InputDataKeuanganController extends CI_Controller {
 		$this->load->model('Cabang');
 		$this->load->model('Keuangan');
         $this->load->model('Aruskas');
+        $this->load->model('Labarugi');
 	}
 
 	public function index()
@@ -18,7 +19,6 @@ class InputDataKeuanganController extends CI_Controller {
 		$this->load->view('Cabang/InputDataKeuangan');
 		$this->load->view('Fixed/Footer');
 	}
-
 
 	public function add()
     {
@@ -43,7 +43,6 @@ class InputDataKeuanganController extends CI_Controller {
 						'file_keuangan' => $file["file_name"]
 					);
 
-                    
                     $insert = $this->Keuangan->insert($dataKeuangan);
                     $idKeuangan = $this->Keuangan->getDataKeuanganTerbaru($dataKeuangan["idCabang"]);
                     $this->parsingDataKeuangan($file["file_name"],$idKeuangan[0]->idKeuangan);
@@ -71,6 +70,14 @@ class InputDataKeuanganController extends CI_Controller {
         $pendapatan = (int)$the_big_array[1][2];
         $biaya = (int)$the_big_array[1][3];
         $kas = ($pendapatan + $piutang) - ($hutang + $biaya); 
+
+        $labaRugi = $pendapatan - ($hutang + $bebanBiaya);
+
+        $keuntungan = array(
+                'keuntungan' => $labaRugi/0.01,
+                'idKeuangan' => $idKeuangan
+                 ); 
+
         $dataKas = array(
                 'hutang' => $hutang,
                 'piutang' => $piutang,
@@ -80,11 +87,19 @@ class InputDataKeuanganController extends CI_Controller {
                 'kas' => $kas
         );
 
+        $keuangan = array(
+                    'Aruskas' => $dataKas, 
+                    'Labarugi' => $keuntungan
+                );
+
         $insert = $this->Aruskas->insertData($dataKas);
-        return $dataKas;
+        $insert = $this->Labarugi->insertData($keuntungan);
+        
+        return $keuangan;
     }
 
 }
+
 
 
 
