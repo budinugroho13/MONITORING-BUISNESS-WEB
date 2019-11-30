@@ -19,7 +19,16 @@ class Keuangan extends CI_Model {
 		return $query->result();
 	}
 
+	public function getIdKeuangan($idCabang)
+	{
+		# code...
+		$this->db->select('idKeuangan');
+		$this->db->from('keuangan');
+		$this->db->where('keuangan.idCabang', $idCabang);
+		$query = $this->db->get();
+		return $query->result();
 
+	}
 	public function getDataLengkap($namaCabang)
 	{
 		# code...

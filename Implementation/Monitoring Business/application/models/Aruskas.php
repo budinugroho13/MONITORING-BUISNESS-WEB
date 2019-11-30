@@ -18,6 +18,13 @@ class Aruskas extends CI_Model {
 		$this->db->insert('aruskas', $data);	
 	}	
 
+	public function hapusData($idKeuangan)
+	{
+		$this->db->where('idKeuangan', $idKeuangan);
+		$this->db->delete('aruskas');
+		return;
+	}
+
 }
 
 /* End of file Aruskas.php */

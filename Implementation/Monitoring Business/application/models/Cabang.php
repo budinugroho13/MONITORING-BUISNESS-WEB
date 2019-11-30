@@ -51,6 +51,24 @@ class Cabang extends CI_Model {
 	}
 	
 
+	public function editData($data,$idCabang)
+	{
+		$this->db->where('idCabang',$idCabang);
+		$this->db->update('cabang',$data);
+		return;
+	} 
+
+	public function hapusDataCabang($idCabang){
+	
+
+		$tables = array('keuangan','cabang');
+		$this->db->where('idCabang', $idCabang);
+		$this->db->delete($tables);
+		return;
+
+
+	}
+
 }
 
 /* End of file Model.php */
