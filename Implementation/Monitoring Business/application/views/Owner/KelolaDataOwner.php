@@ -5,19 +5,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="css/lp.css"> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/KelolaDataOwner.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+    <script src="assets/sweetalert/node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
     <title>Monitoring Business</title>
   </head>
-  
-  <body >
+
+  <script>
+    function gagal(){
+      Swal.fire({
+        type: 'error',
+        title: 'Edit Gagal',
+        text: 'Akun Gagal Diupdate',
+      })
+    }
+
+     function berhasil(){
+          Swal.fire({
+            type: 'success',
+            title: 'Edit Sukses',
+            text: 'Update Berhasil',
+          })
+        }
+  </script>
+
+  <?php if (!empty($this->session->flashdata('owner_sukses'))) {?>
+    <?php var_dump("askaoskoa") ?>
+    <body onload="berhasil()">
+    <?php}if (!empty($this->session->flashdata('owner_gagal'))) {?>
+    <body onload="gagal()">
+    <?php } ?>
+    <?php $owner = $this->session->userdata('owner'); ?>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -29,8 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <ul class="nav navbar-nav navbar-right">
           <div class="navbar-header">
-              <a class="navbar-brand" href="#">Nama Owner</a>
-          </div>
+              <a class="navbar-brand" href="#"><?php echo $owner["nama"] ?></a>
+          </div>  
           <li><a href="<?php echo base_url("LandingController") ?>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
@@ -38,146 +61,91 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
     <div class="container">
       <div class="jumbotron">
-        <h1>Nama Bisnis</h1>      
-        <p>Keterangan Bisnis yang dimiliki.</p>
-      </div>    
+        <h1>Edit Profile Owner</h1>      
+      </div>
+        <div class="card text-center">
+          <div class="card-header">
+            <img src="assets/img/suryo.jpg">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><?php echo $owner["nama"] ?></h5>
+            <p class="card-text">E-mail : <?php echo($owner["email"]) ?></p>
+            <p class="card-text">Alamat : <?php echo($owner["alamat"]) ?></p>
+            <p class="card-text">Nama Bisnis : <?php echo($owner["nama_bisnis"]) ?></p>
+            <p class="card-text">Jenis Bisnis : <?php echo($owner["jenis_bisnis"]) ?></p>
+            <p class="card-text">No Telepon : <?php echo($owner["no_telp"]) ?></p>
+            <p class="card-text">Alamat : <?php echo($owner["alamat"]) ?></p>
+          <button class="btn btn-primary" data-target="#exampleModalCenter" data-toggle="modal">Edit Data Cabang</button>    
+
+          </div>
+          <div class="card-footer text-muted">
+          </div>
+        </div>
     </div>
 
-      <div class="card text-center">
-        <div class="card-header">
-          <strong>Biodata Pemilik Usaha</strong>
-        </div>
-        
-        <div class="container">
-      <button style="width: 250px; float: left;" type="button" class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Tambah Data Owner</button>      
-
-      <div class="input-group" style="width: 200px; float: right;">
-        <input type="text" class="form-control" placeholder="Search Nama Cabang ...">
-      </div><br><br><hr> 
-
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card-body">
-            <div class="card">
-              <img src="avatar1.jpg" alt="Avatar" style="width:100%">
-              <div class="containerc">
-                <h4><b>Jane Doe</b></h4> 
-                <p>Interior Designer</p>
-                <button type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> 
-                <button type="button" class="btn btn-danger">Hapus</button>  
-              </div>
-            </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <form  action="<?php echo base_url('KelolaDataOwnerController/editData') ?>" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><center><p class="h1">Form Tambah Data </p></center></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="card-body">
-            <div class="card">
-              <img src="avatar1.jpg" alt="Avatar" style="width:100%">
-              <div class="containerc">
-                <h4><b>Jane Doe</b></h4> 
-                <p>Interior Designer</p>
-                <button type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> 
-                <button type="button" class="btn btn-danger">Hapus</button>  
+          <div class="modal-body">
+              <div class="container">
+                <img src="assets/img/avatar.png" class="mx-auto d-block" alt="avatar" style="width: 30%" >  
               </div>
-            </div>
+              <br>
+             </label> 
+            <div class="form-group">
+             <label><b>Nama Owner</b></label>
+             <input type="hidden"value="<?php echo $owner["idOwner"] ?>" name="id"required>
+             
+             <label><b>Nama Owner</b></label>
+             <input type="text" class="form-control"  name="nama" value="<?php echo $owner["nama"] ?>" required>
+           </div> 
+            <div class="form-group">
+             <label><b>Alamat Owner</b></label>
+             <input type="text" class="form-control"  placeholder="Masukkan E-mail" name="email" value="<?php echo $owner["email"] ?>" required>
+           </div> 
+            <div class="form-group">
+             <label><b>Alamat Owner</b></label>
+             <input type="text" class="form-control"  name="alamat" value="<?php echo $owner["alamat"] ?>" required>
+           </div> 
+            <div class="form-group">
+             <label><b>Nama Bisnis</b></label>
+             <input type="text" class="form-control"  placeholder="Masukkan Nama Cabang" name="nb" value="<?php echo $owner["nama_bisnis"] ?>" required>
+           </div> 
+            <div class="form-group">
+             <label><b>Jenis Bisnis</b></label>
+             <input type="text" class="form-control"  placeholder="Masukkan Nama Cabang" name="jb" value="<?php echo $owner["jenis_bisnis"] ?>" required>
+           </div>
+
+            <div class="form-group">
+             <label><b>No Telepon </b></label>
+             <input type="text" class="form-control"  placeholder="Masukkan Nama Cabang" name="hp" value="<?php echo $owner["no_telp"] ?>" required>
+           </div>
+
+            <div class="form-group">
+             <label><b>Password Baru</b></label>
+             <input type="Password" class="form-control"  placeholder="" name="oldPass" required>
+           </div>
+
+            <div class="form-group">
+             <label><b>Confirm Password Baru</b></label>
+             <input type="Password" class="form-control"  placeholder="" name="newPass" required>
+           </div>
+
+
           </div>
-        </div>
-      </div>
-
-          <center><div class="card-body1">
-            <div class="card">
-              <img src="avatar1.jpg" alt="Avatar" style="width:100%">
-              <div class="containerc1">
-                <h4><b>Jane Doe</b></h4> 
-                <p>Interior Designer</p>
-                <button type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> 
-                <button type="button" class="btn btn-danger">Hapus</button>  
-              </div>
-            </div>
-          </div></center>
-
-      <div class="row">
-          <div class="col-sm-6">
-            <div class="card-body">
-              <div class="card">
-                <img src="avatar1.jpg" alt="Avatar" style="width:100%">
-                <div class="containerc">
-                  <h4><b>Jane Doe</b></h4> 
-                  <p>Interior Designer</p>
-                  <button type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> 
-                  <button type="button" class="btn btn-danger">Hapus</button> 
-                </div>
-              </div>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-
-        <div class="col-sm-6">
-            <div class="card-body">
-              <div class="card">
-                <img src="avatar1.jpg" alt="Avatar" style="width:100%">
-                <div class="containerc">
-                  <h4><b>Jane Doe</b></h4> 
-                  <p>Interior Designer</p>
-                  <button type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Edit</button> 
-                  <button type="button" class="btn btn-danger">Hapus</button>  
-                </div>
-              </div>
-            </div>
-          </div>
+              </form>
         </div>
       </div>
-  </div>
-
-
-
-    <div id="id01" class="modal">
-        
-        <form class="modal-content animate" action="/action_page.php">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="avatar.png" alt="Avatar" class="avatar">
-          </div>
-
-          <div class="container">
-            <label for="uname"><b>Nama Lengkap</b></label>
-            <br>
-            <input type="text" placeholder="Enter Nama Lengkap" name="uname" required>
-            <br>
-            <label for="psw"><b>Email</b></label>
-            <br>
-            <input type="text" placeholder="Enter Email" name="psw" required>
-            <br>
-            <label for="js"><b>New Password</b></label>
-            <br>
-            <input type="text" placeholder="Enter New Password" name="js" required>
-            <br>
-            <label for="js1"><b>Confirm Password</b></label>
-            <br>
-            <input type="text" placeholder="Enter Confirm Password" name="js1" required>
-            <br>
-            <label for="hp"><b>No Telephone</b></label>
-            <br>
-            <input type="text" placeholder="Enter No Telephone" name="hp" required>
-            <br>   
-            <label for="bisnis"><b>Nama Bisnis</b></label>
-            <br>
-            <input type="text" placeholder="Enter Nama Bisnis" name="bisnis" required>
-            <br>
-            <label for="alamat"><b>Alamat</b></label>
-            <br>
-            <textarea></textarea>
-            <br>     
-            <button class="button1" type="submit">Simpan</button>
-            <br>
-            <label>
-              <input type="checkbox" checked="checked" name="remember"> Data yang dimasukkan sudah benar sesuai dengan kenyataan.
-            </label>
-          </div>
-
-          <div class="containerbwh" style="background-color:#f1f1f1">
-            <button style="float: right;" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> <br>
-          </div>
-        </form>
-      </div>
+    </div>
 

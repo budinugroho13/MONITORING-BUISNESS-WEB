@@ -47,7 +47,12 @@ class LandingController extends CI_Controller {
 			$dataLogin = array(
 				'idOwner' => $dataAkun->idOwner,
 				'username' => $dataAkun->username,
-				'nama' => $dataAkun->nama
+				'nama' => $dataAkun->nama,
+				'email' => $dataAkun->email,
+				'alamat' => $dataAkun->alamat,
+				'jenis_bisnis' => $dataAkun->jenis_bisnis,
+				'nama_bisnis' => $dataAkun->nama_bisnis,
+				'no_telp' => $dataAkun->no_telpon,
 			);
 			$this->session->set_userdata('owner', $dataLogin);
 			redirect('LandingOwnerController');	

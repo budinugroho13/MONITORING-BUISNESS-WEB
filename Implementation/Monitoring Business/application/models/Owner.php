@@ -19,6 +19,13 @@ class Owner extends CI_Model {
 		return;
 	}
 
+	public function editOwner($idOwner,$data)
+	{
+		# code...
+		$this->db->where('idOwner',$idOwner);
+		$this->db->update('owner',$data);
+	}
+
 
 	
 

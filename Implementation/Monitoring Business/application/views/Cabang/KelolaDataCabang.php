@@ -72,7 +72,7 @@
                 <td><?php echo $x->namaCabang; ?></td>
                 <td><?php echo $x->alamatCabang; ?></td>
                 <td><?php echo $x->jenis_bisnis; ?></td>
-                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit_<?php echo $x->idCabang; ?>"r" style="width:auto;">Edit</button> 
+                <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#edit_<?php echo $x->idCabang; ?>" style="width:auto;">Edit</button> 
                     <a type="button" class="btn btn-danger" href="<?php echo base_url('KelolaDataCabangController/hapus/').$x->idCabang ?>" onClick="return confirm('Apakah anda Yakin untuk menghapus !')">Hapus</a>
                 </td>
               </tr>
@@ -151,30 +151,10 @@
       </div>
       <div class="modal-body">
           <div class="container">
-            <!-- <img src="assets/img/avatar.png" alt="Avatar" class="avatar"> -->
-           <!--  <img src="assets/img/avatar.png" alt="Avatar" class="rounded-circle"> -->
-           <!-- <img src="assets/img/avatar.png" class="rounded-circle" alt="avatar" width="304" height="236">  -->
             <img src="assets/img/avatar.png" class="mx-auto d-block" alt="avatar" style="width: 30%" >  
           </div>
    
           <br>
-         <!--    <label for="uname"><b>Nama Cabang</b></label>
-         <br>
-         <input type="text" placeholder="Enter Nama Cabang" name="name" required>
-         <br>
-         <label for="psw"><b>Lokasi Cabang</b></label>
-         <br>
-         <input type="text" placeholder="Enter Lokasi Cabang" name="lokasi" required>
-         <br>
-         <label for="username"><b>Username</b></label>
-         <br>
-         <input type="text" placeholder="Username" name="username" required>
-         <br>
-         <label for="Password"><b>Password</b></label>
-         <br>
-         <input type="Password" placeholder="Password" name="pass" required>
-         <label>
-           <input type="checkbox" checked="checked" name="remember"> Data yang dimasukkan sudah benar sesuai dengan kenyataan.
          </label> -->
         <div class="form-group">
          <label for="uname"><b>Nama Cabang</b></label>

@@ -37,7 +37,8 @@ class RegistrasiController extends CI_Controller {
 				'username' => $this->input->post('email'),
 				'nama_bisnis' => $this->input->post('nb'),
 				'jenis_bisnis' => $this->input->post('jb'),
-				'no_telpon' => $this->input->post('alamat'),
+				'no_telpon' => $this->input->post('hp'),
+				'alamat' => $this->input->post('alamat'),
 			);
 
 			$x = $this->Owner->getDataOwner($data['username']);

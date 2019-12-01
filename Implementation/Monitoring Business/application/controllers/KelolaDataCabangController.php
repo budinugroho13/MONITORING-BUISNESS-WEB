@@ -78,7 +78,6 @@ class KelolaDataCabangController extends CI_Controller {
 			$this->Cabang->editData($data,$idCabang);
 			$this->session->set_flashdata('CabangSukses', 'Berhasil DiEdit');
 			redirect('KelolaDataCabangController');
-		
 		}
 
 	}
