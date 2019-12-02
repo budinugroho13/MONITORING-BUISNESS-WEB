@@ -25,6 +25,17 @@ class Cabang extends CI_Model {
 		# code...
 	}	
 
+	public function getAllDataCabang($idCabang)
+	{
+		$this->db->select('*');
+		$this->db->from('cabang');
+		$this->db->join('owner', 'owner.idOwner = cabang.idCabang');
+		$this->db->where('idCabang', $idCabang);
+		$query = $this->db->get();
+		return $query->result();
+		# code...
+	}	
+
 	public function setSaran($data,$id)
 	{
 		# code...
@@ -42,6 +53,8 @@ class Cabang extends CI_Model {
 		return $query->result();
 		# code...
 	}
+// 	$where = "name='Joe' AND status='boss' OR status='active'";
+// $this->db->where($where);
 
 	public function insertData($data)
 	{

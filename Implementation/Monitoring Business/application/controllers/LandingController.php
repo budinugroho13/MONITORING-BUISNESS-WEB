@@ -26,7 +26,9 @@ class LandingController extends CI_Controller {
 		if($pass == $dataAkun->password && isset($pass)){
 			$dataLogin = array(
 				'username' => $dataAkun->username,
-				'namaCabang' => $dataAkun->namaCabang
+				'namaCabang' => $dataAkun->namaCabang,
+				'idCabang' => $dataAkun->idCabang,
+				'alamat' => $dataAkun->alamatCabang
 			);
 			$this->session->set_userdata('cabang', $dataLogin);
 			$data = $this->session->userdata('cabang');

@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <p class="card-text">Jenis Bisnis : <?php echo($owner["jenis_bisnis"]) ?></p>
             <p class="card-text">No Telepon : <?php echo($owner["no_telp"]) ?></p>
             <p class="card-text">Alamat : <?php echo($owner["alamat"]) ?></p>
-          <button class="btn btn-primary" data-target="#exampleModalCenter" data-toggle="modal">Edit Data Cabang</button>    
+          <button class="btn btn-primary" data-target="#exampleModalCenter" data-toggle="modal">Edit Profile Owner</button>    
 
           </div>
           <div class="card-footer text-muted">
@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="modal-content">
          <form  action="<?php echo base_url('KelolaDataOwnerController/editData') ?>" method="post">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><center><p class="h1">Form Tambah Data </p></center></h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"><center><p class="h1">Edit Profile </p></center></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

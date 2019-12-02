@@ -19,6 +19,13 @@ class KelolaDataCabangController extends CI_Controller {
 			$x = $this->Cabang->getAllData($owner['idOwner']);
 			$this->load->view('Cabang/KelolaDataCabang',['cabang' => $x]);
 			$this->load->view('Fixed/Footer');		
+		}elseif(!empty($this->session->userdata('cabang'))){
+			$cabang = $this->session->userdata('cabang');
+			
+			$x = $this->Cabang->getAllDataCabang($cabang['idCabang']);
+
+			$this->load->view('Cabang/KelolaDataCabang2',['data' => $x]);
+			$this->load->view('Fixed/footer');
 		}
 	}
 
@@ -79,14 +86,10 @@ class KelolaDataCabangController extends CI_Controller {
 			$this->session->set_flashdata('CabangSukses', 'Berhasil DiEdit');
 			redirect('KelolaDataCabangController');
 		}
-
 	}
-
-	public function hapus($idCabang) {
-
-
+	
+	public function hapus($idCabang){
 		$idKeuangan = $this->Keuangan->getIdKeuangan($idCabang);
-
 		foreach ($idKeuangan as $id) {
 			# code...
 			$this->Aruskas->hapusData($id->idKeuangan);
@@ -95,7 +98,6 @@ class KelolaDataCabangController extends CI_Controller {
 			
 		$this->Cabang->hapusDataCabang($idCabang);
 		redirect('KelolaDataCabangController');
-
 	}
 }
 
